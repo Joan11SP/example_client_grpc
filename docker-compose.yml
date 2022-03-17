@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  cliente_sql: 
+    container_name: node
+    restart: always
+    build: .
+    depends_on:
+      - sql_server
+    ports:
+      - 1000:9900
+    volumes: 
+      - .:/usr/src/app
+  sql_server:
+    container_name: db_inversion
+    image: mcr.microsoft.com/mssql/server
+    volumes:
+      - C:/SQL_CONTAINER/:/run/desktop/mnt/host/c/
+    environment:
+      SA_PASSWORD: bruja12345#
+      ACCEPT_EULA: bruja
+    logging:
+      driver: none
+    
+    

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.cliente.sql";
+option java_outer_classname = "ClLIENTPRT";
+option objc_class_prefix = "CP";
+
+package sql;
+
+// The greeting service definition.
+service Greeter 
+{
+  // Sends a greeting
+  rpc execute_sp (Request) returns (Response) {}
+}
+
+// The request message containing the user's name.
+message Request 
+{
+  string name_db = 1;
+  repeated _Parameters parameters_in = 2;
+  repeated _Parameters parameters_out = 3;
+  string sp_name = 4;
+}
+
+message _Parameters 
+{
+  string parameter = 1;
+  string value = 2;
+}
+
+// The response message containing the greetings
+message Response 
+{
+  string outs = 1;
+  bool status = 2;
+  string menssage = 3;
+}
+
+
